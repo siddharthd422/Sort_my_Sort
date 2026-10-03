@@ -1,0 +1,14 @@
+1. set up the prisma 7 using the docs commands
+
+npm install prisma@prev @types/node @types/pg --save-dev
+npm install @prisma/client@7 @prisma/adapter-pg pg dotenv
+
+2. initialized the prisma using the 
+    npx prisma init --datasource-provider postgresql --output ../generated/prisma
+
+    generates the prismaschema.ts
+
+3.included this in tsconfig.json
+    // to consider ts files only from the src folder
+    "include":["./src/**/*"],
+

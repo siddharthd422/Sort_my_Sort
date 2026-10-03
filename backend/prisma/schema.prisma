@@ -1,0 +1,30 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+}
+
+model Manager {
+  id            String    @id @default(uuid())
+  name          String
+  email         String    @unique
+  phone         String    @unique
+  state         String
+  city          String
+  gst           String
+  accountNumber String
+  ifsc          String
+  listings      Listing[]
+}
+
+model Listing {
+  id          String  @unique @default(uuid())
+  description String
+  price       Int
+  address     String
+  media       String
+  managerId   String
+  manager     Manager @relation(fields: [managerId], references: [id])
+}
